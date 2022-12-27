@@ -1,5 +1,11 @@
 package com.example.kotlinfund
 
+import android.os.Build
+import androidx.annotation.RequiresApi
+import java.lang.Math.max
+import java.util.stream.IntStream.range
+
+@RequiresApi(Build.VERSION_CODES.N)
 fun main(){
     val nums = listOf(1,2,3,4)
     val fold = nums.runningFold(0){acc, i -> acc + i}
@@ -28,10 +34,35 @@ fun main(){
 //    println(fail)
 * */
 
-    val integers = intArrayOf(1,5,-2,-4,0)
+    val integers = intArrayOf(17,18,5,4,6,1)
 
-    val res = containsDuplicate(integers)
+    val res = replaceElements(integers)
     println(res)
+}
+
+@RequiresApi(Build.VERSION_CODES.N)
+fun replaceElements(arr: IntArray): IntArray {
+    //initial max -1
+    //reverse iteration
+    //newMax = max(oldMax , arr[i])
+
+    var size = arr.size
+    var maxFromRight = arr[size - 1]
+    arr[size - 1] = -1
+    var i = size -2
+    while (i >= 0){
+        var temp  = arr[i]
+        arr[i] = maxFromRight
+        if(maxFromRight < temp)
+            maxFromRight = temp
+        i--
+    }
+//    for( i in arr.size-1 .. -1){
+//        var newMax = max(rightMAx , arr[i])
+//        arr[i] = rightMAx
+//        rightMAx = newMax
+//    }
+return arr
 }
 fun containsDuplicate(nums: IntArray): Boolean {
 
@@ -92,7 +123,7 @@ fun twoSum(nums: IntArray, target: Int): IntArray {
     }
     return ans
 }
-fun pushExample(){
+fun pushToLinkedList(){
     val list = LinkedList<Int>()
     list.push(3)
     list.push(4)
