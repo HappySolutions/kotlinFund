@@ -1,14 +1,16 @@
 package com.example.kotlinfund
 
 fun main(){
-//    val list = Node(1, Node(2, Node(3, Node(4, Node(5)))))
-//    println(list)
-//    list.printRev()
     val nums = listOf(1,2,3,4)
     val fold = nums.runningFold(0){acc, i -> acc + i}
+    val students = mutableListOf(Student(0,50,"m"), Student(1,70,"k"), Student(2,100,"j"))
+/*
+ //    val list = Node(1, Node(2, Node(3, Node(4, Node(5)))))
+//    println(list)
+//    list.printRev()
+
     //println(fold)
    // pushExample()
-    val students = mutableListOf(Student(0,50,"m"), Student(1,70,"k"), Student(2,100,"j"))
 //    val folds = students.fold(0){acc, student ->
 //        acc + student.percent
 //    }
@@ -24,6 +26,8 @@ fun main(){
 //    println(test3)
 //    println(sucess)
 //    println(fail)
+* */
+
     val res = isAnagram("anagram", "nagaram")
     println(res)
 }
@@ -59,7 +63,21 @@ fun isAnagram(s: String, t: String): Boolean {
         return true
     }
 }
-
+fun twoSum(nums: IntArray, target: Int): IntArray {
+    val numsHash: MutableMap<Int, Int> = HashMap()
+    val ans: IntArray = IntArray(2)
+    var i = 0
+    for(i in nums.indices){
+        if(numsHash.containsKey(target - nums[i])){
+            ans[0] = i
+            if(target - nums[i] != null)
+                ans[1] = numsHash[target - nums[i]]!!
+            return ans
+        }
+        numsHash[nums[i]] = i
+    }
+    return ans
+}
 fun pushExample(){
     val list = LinkedList<Int>()
     list.push(3)
