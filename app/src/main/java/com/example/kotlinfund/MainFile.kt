@@ -28,10 +28,24 @@ fun main(){
 //    println(fail)
 * */
 
-    val res = isAnagram("anagram", "nagaram")
+    val integers = intArrayOf(1,5,-2,-4,0)
+
+    val res = containsDuplicate(integers)
     println(res)
 }
+fun containsDuplicate(nums: IntArray): Boolean {
 
+    var tempNums = intArrayOf().toMutableList()
+    for (item in nums)
+        if(tempNums.contains(item)){
+            println(tempNums)
+
+            return true
+        }else{
+            tempNums.add(item)
+        }
+return false
+}
 fun isAnagram(s: String, t: String): Boolean {
     if(s.length != t.length)
         return false
