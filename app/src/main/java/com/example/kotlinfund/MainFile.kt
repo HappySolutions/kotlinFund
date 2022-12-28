@@ -36,10 +36,29 @@ fun main(){
 
     val integers = intArrayOf(17,18,5,4,6,1)
 
-    val res = replaceElements(integers)
-    println(res)
+    lengthOfLastWord("   fly me   to   the moon  ")
+    //println(res)
 }
+fun lengthOfLastWord(s: String): Int {
+    var last =""
+    var separated = s.split(" ")
+    var size = separated.size
+    println(separated)
+    var i = 1
+    while(i <= size) {
 
+        if(separated[size - i].isNotEmpty()) {
+            last = separated[size - i]
+            println(last)
+            break
+        }
+        println(separated)
+        i++
+    }
+
+
+    return last.length
+}
 @RequiresApi(Build.VERSION_CODES.N)
 fun replaceElements(arr: IntArray): IntArray {
     //initial max -1
